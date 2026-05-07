@@ -16,10 +16,6 @@ var _inv_timer: float = 0.0
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
-	max_health = 100
-	speed = 150.0
-	armor = 0
-	dodge_chance = 0.0
 	super._ready()
 	add_to_group("players")
 

@@ -18,6 +18,7 @@ const UPGRADES: Array[Dictionary] = [
 var _player: Player = null
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 
 func show_shop(player: Player) -> void:

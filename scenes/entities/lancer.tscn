@@ -1,0 +1,128 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/entities/characters/Lancer.gd" id="1_lancer"]
+[ext_resource type="Script" path="res://src/weapons/MeleeWeapon.gd" id="2_weapon"]
+[ext_resource type="Texture2D" uid="uid://cohpk48ue0b60" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Idle.png" id="3_sidle"]
+[ext_resource type="Texture2D" uid="uid://cnftksotueg02" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Walk.png" id="4_swalk"]
+
+[sub_resource type="AtlasTexture" id="AT_li0"]
+atlas = ExtResource("3_sidle")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_li1"]
+atlas = ExtResource("3_sidle")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_li2"]
+atlas = ExtResource("3_sidle")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_li3"]
+atlas = ExtResource("3_sidle")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_li4"]
+atlas = ExtResource("3_sidle")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_li5"]
+atlas = ExtResource("3_sidle")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw0"]
+atlas = ExtResource("4_swalk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw1"]
+atlas = ExtResource("4_swalk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw2"]
+atlas = ExtResource("4_swalk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw3"]
+atlas = ExtResource("4_swalk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw4"]
+atlas = ExtResource("4_swalk")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_lw5"]
+atlas = ExtResource("4_swalk")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SF_lancer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_li0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_li1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_li2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_li3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_li4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_li5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_lw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_lw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_lw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_lw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_lw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_lw5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CS_lancer"]
+radius = 22.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lancer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.6, 0.8, 1, 1)
+position = Vector2(0, -7)
+sprite_frames = SubResource("SF_lancer")
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CS_lancer")
+
+[node name="MeleeWeapon" type="Node2D" parent="."]
+script = ExtResource("2_weapon")
+damage = 20
+fire_rate = 0.7
+attack_radius = 70.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

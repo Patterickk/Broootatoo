@@ -5,7 +5,7 @@ signal xp_dropped(amount: int, position: Vector2)
 
 @export var xp_value: int = 10
 @export var damage: int = 10
-@export var attack_range: float = 42.0
+@export var attack_range: float = 55.0
 @export var attack_cooldown: float = 1.0
 
 var _attack_timer: float = 0.0

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cnewistbtunms" path="res://src/Game.gd" id="1_game"]
 [ext_resource type="Script" uid="uid://dglqlha37yvgu" path="res://src/systems/WaveManager.gd" id="2_wave"]
-[ext_resource type="PackedScene" path="res://scenes/entities/player.tscn" id="3_player"]
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_basic.tscn" id="4_orc"]
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_fast.tscn" id="5_fast"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
@@ -26,8 +25,6 @@ offset_top = -680.0
 offset_right = 1240.0
 offset_bottom = 680.0
 color = Color(0.22, 0.42, 0.18, 1)
-
-[node name="Player" parent="." unique_id=737281532 instance=ExtResource("3_player")]
 
 [node name="WaveManager" type="Node" parent="." unique_id=274437288]
 script = ExtResource("2_wave")

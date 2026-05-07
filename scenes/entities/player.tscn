@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://src/entities/Player.gd" id="1_player"]
+[ext_resource type="Script" path="res://src/entities/characters/Archer.gd" id="1_player"]
 [ext_resource type="Script" path="res://src/weapons/ArrowWeapon.gd" id="2_weapon"]
 [ext_resource type="PackedScene" path="res://scenes/projectiles/arrow.tscn" id="3_arrow"]
 [ext_resource type="Texture2D" uid="uid://cohpk48ue0b60" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Idle.png" id="4_sidle"]

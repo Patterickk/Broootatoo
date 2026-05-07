@@ -7,23 +7,31 @@ signal game_won
 signal difficulty_changed(mode: Difficulty)
 
 var difficulty: Difficulty = Difficulty.NORMAL
+var selected_character: String = "archer"
 var is_game_active: bool = false
 var elapsed_time: float = 0.0
 
+const CHARACTER_SCENES: Dictionary = {
+	"archer":  "res://scenes/entities/player.tscn",
+	"warrior": "res://scenes/entities/warrior.tscn",
+	"lancer":  "res://scenes/entities/lancer.tscn",
+	"pawn":    "res://scenes/entities/pawn.tscn",
+}
+
 const _HEALTH_MULT: Dictionary = {
-	Difficulty.EASY: 0.65,
+	Difficulty.EASY:   0.65,
 	Difficulty.NORMAL: 1.0,
-	Difficulty.HARD: 1.5,
+	Difficulty.HARD:   1.5,
 }
 const _DAMAGE_MULT: Dictionary = {
-	Difficulty.EASY: 0.65,
+	Difficulty.EASY:   0.65,
 	Difficulty.NORMAL: 1.0,
-	Difficulty.HARD: 1.4,
+	Difficulty.HARD:   1.4,
 }
 const _SPAWN_MULT: Dictionary = {
-	Difficulty.EASY: 0.6,
+	Difficulty.EASY:   0.6,
 	Difficulty.NORMAL: 1.0,
-	Difficulty.HARD: 1.6,
+	Difficulty.HARD:   1.6,
 }
 
 func set_difficulty(mode: Difficulty) -> void:
@@ -38,6 +46,10 @@ func get_damage_multiplier() -> float:
 
 func get_spawn_multiplier() -> float:
 	return _SPAWN_MULT[difficulty]
+
+func get_character_scene() -> PackedScene:
+	var path: String = CHARACTER_SCENES.get(selected_character, CHARACTER_SCENES["archer"])
+	return load(path) as PackedScene
 
 func start_game() -> void:
 	is_game_active = true

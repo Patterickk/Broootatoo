@@ -1,0 +1,52 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/ui/CharacterSelect.gd" id="1_cs"]
+
+[node name="CharacterSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_cs")
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="VBox" type="VBoxContainer" parent="BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 40.0
+offset_right = -60.0
+offset_bottom = -40.0
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="BG/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "SELECT YOUR CHARACTER"
+theme_override_font_sizes/font_size = 36
+
+[node name="Hint" type="Label" parent="BG/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Click a hero to start"
+
+[node name="CharButtons" type="HBoxContainer" parent="BG/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="Gap" type="Control" parent="BG/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="DiffLabel" type="Label" parent="BG/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Difficulty:  Normal"
+
+[node name="DiffButtons" type="HBoxContainer" parent="BG/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
