@@ -1,0 +1,126 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/entities/Player.gd" id="1_player"]
+[ext_resource type="Script" path="res://src/weapons/ArrowWeapon.gd" id="2_weapon"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/arrow.tscn" id="3_arrow"]
+[ext_resource type="Texture2D" uid="uid://cohpk48ue0b60" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Idle.png" id="4_sidle"]
+[ext_resource type="Texture2D" uid="uid://cnftksotueg02" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Walk.png" id="5_swalk"]
+
+[sub_resource type="AtlasTexture" id="AT_i0"]
+atlas = ExtResource("4_sidle")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_i1"]
+atlas = ExtResource("4_sidle")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_i2"]
+atlas = ExtResource("4_sidle")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_i3"]
+atlas = ExtResource("4_sidle")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_i4"]
+atlas = ExtResource("4_sidle")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_i5"]
+atlas = ExtResource("4_sidle")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w0"]
+atlas = ExtResource("5_swalk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w1"]
+atlas = ExtResource("5_swalk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w2"]
+atlas = ExtResource("5_swalk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w3"]
+atlas = ExtResource("5_swalk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w4"]
+atlas = ExtResource("5_swalk")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AT_w5"]
+atlas = ExtResource("5_swalk")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SF_player"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_i5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_w5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CS_player"]
+radius = 22.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_player")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SF_player")
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CS_player")
+
+[node name="ArrowWeapon" type="Node2D" parent="."]
+script = ExtResource("2_weapon")
+arrow_scene = ExtResource("3_arrow")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

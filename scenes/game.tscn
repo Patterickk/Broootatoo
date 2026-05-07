@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bgfginymkpgs0"]
+
+[ext_resource type="Script" uid="uid://cnewistbtunms" path="res://src/Game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://dglqlha37yvgu" path="res://src/systems/WaveManager.gd" id="2_wave"]
+[ext_resource type="PackedScene" path="res://scenes/entities/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/entities/orc_basic.tscn" id="4_orc"]
+[ext_resource type="PackedScene" path="res://scenes/entities/orc_fast.tscn" id="5_fast"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/shop.tscn" id="7_shop"]
+
+[node name="Game" type="Node2D" unique_id=1251493614]
+script = ExtResource("1_game")
+
+[node name="Arena" type="Node2D" parent="." unique_id=216092850]
+
+[node name="Floor" type="ColorRect" parent="Arena" unique_id=572320107]
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.18, 0.32, 0.14, 1)
+
+[node name="Border" type="ColorRect" parent="Arena" unique_id=1661984485]
+offset_left = -1240.0
+offset_top = -680.0
+offset_right = 1240.0
+offset_bottom = 680.0
+color = Color(0.22, 0.42, 0.18, 1)
+
+[node name="Player" parent="." unique_id=737281532 instance=ExtResource("3_player")]
+
+[node name="WaveManager" type="Node" parent="." unique_id=274437288]
+script = ExtResource("2_wave")
+orc_basic_scene = ExtResource("4_orc")
+orc_fast_scene = ExtResource("5_fast")
+
+[node name="HUD" parent="." unique_id=720196844 instance=ExtResource("6_hud")]
+
+[node name="ShopUI" parent="." unique_id=909416112 instance=ExtResource("7_shop")]

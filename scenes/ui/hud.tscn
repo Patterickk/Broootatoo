@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/ui/HUD.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Margin" type="MarginContainer" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 270.0
+offset_bottom = 120.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HealthBar" type="ProgressBar" parent="Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 22)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="XPBar" type="ProgressBar" parent="Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(220, 14)
+max_value = 100.0
+value = 0.0
+show_percentage = false
+
+[node name="WaveLabel" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+text = "Wave 0 / 10"
+
+[node name="LevelLabel" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+text = "LVL 1"
