@@ -12,10 +12,7 @@ var is_game_active: bool = false
 var elapsed_time: float = 0.0
 
 const CHARACTER_SCENES: Dictionary = {
-	"archer":  "res://scenes/entities/player.tscn",
-	"warrior": "res://scenes/entities/warrior.tscn",
-	"lancer":  "res://scenes/entities/lancer.tscn",
-	"pawn":    "res://scenes/entities/pawn.tscn",
+	"archer": "res://scenes/entities/player.tscn",
 }
 
 const _HEALTH_MULT: Dictionary = {

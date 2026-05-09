@@ -7,9 +7,10 @@ signal all_waves_completed
 
 @export var orc_basic_scene: PackedScene
 @export var orc_fast_scene: PackedScene
+@export var boss_scene: PackedScene
 @export var spawn_margin: float = 80.0
 
-const MAX_WAVES: int = 10
+const MAX_WAVES: int = 20
 const BASE_COUNT: int = 5
 const COUNT_SCALE: float = 1.3
 
@@ -34,6 +35,15 @@ func _calc_count(wave: int) -> int:
 
 func _spawn_wave(count: int) -> void:
 	var vp_rect: Rect2 = get_viewport().get_visible_rect()
+	if current_wave % 5 == 0 and boss_scene != null:
+		var boss: Enemy = boss_scene.instantiate() as Enemy
+		boss.max_health = int(boss.max_health * GameManager.get_health_multiplier())
+		boss.damage = int(boss.damage * GameManager.get_damage_multiplier())
+		get_tree().current_scene.add_child(boss)
+		boss.global_position = _offscreen_position(vp_rect)
+		boss.xp_dropped.connect(_on_xp_dropped)
+		boss.died.connect(_on_enemy_died)
+		enemies_alive += 1
 	for i: int in range(count):
 		var pos: Vector2 = _offscreen_position(vp_rect)
 		var scene: PackedScene = _pick_scene(i)
@@ -41,7 +51,6 @@ func _spawn_wave(count: int) -> void:
 			enemies_alive -= 1
 			continue
 		var enemy: Enemy = scene.instantiate() as Enemy
-		# Scale stats by difficulty before _ready fires
 		enemy.max_health = int(enemy.max_health * GameManager.get_health_multiplier())
 		enemy.damage = int(enemy.damage * GameManager.get_damage_multiplier())
 		get_tree().current_scene.add_child(enemy)
@@ -50,7 +59,6 @@ func _spawn_wave(count: int) -> void:
 		enemy.died.connect(_on_enemy_died)
 
 func _pick_scene(index: int) -> PackedScene:
-	# Fast orc every 3rd enemy starting wave 3
 	if current_wave >= 3 and index % 3 == 2 and orc_fast_scene != null:
 		return orc_fast_scene
 	return orc_basic_scene

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_fast.tscn" id="5_fast"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/shop.tscn" id="7_shop"]
+[ext_resource type="PackedScene" path="res://scenes/entities/boss.tscn" id="8_boss"]
 
 [node name="Game" type="Node2D" unique_id=1251493614]
 script = ExtResource("1_game")
@@ -30,6 +31,7 @@ color = Color(0.22, 0.42, 0.18, 1)
 script = ExtResource("2_wave")
 orc_basic_scene = ExtResource("4_orc")
 orc_fast_scene = ExtResource("5_fast")
+boss_scene = ExtResource("8_boss")
 
 [node name="HUD" parent="." unique_id=720196844 instance=ExtResource("6_hud")]
 

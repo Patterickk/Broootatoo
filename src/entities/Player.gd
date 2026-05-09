@@ -56,7 +56,7 @@ func _tick_invincibility(delta: float) -> void:
 #   1. Is the player already invincible?
 #   2. Did the attack miss (dodge roll)?
 #   3. Is armor high enough to fully absorb the hit?
-func take_damage(amount: int, source: Entity = null) -> bool:
+func take_damage(amount: int, _source: Entity = null) -> bool:
 	if is_invincible:
 		return false
 	else:

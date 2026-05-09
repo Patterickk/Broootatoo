@@ -35,8 +35,43 @@ show_percentage = false
 
 [node name="WaveLabel" type="Label" parent="Margin/VBox"]
 layout_mode = 2
-text = "Wave 0 / 10"
+text = "Wave 0 / 20"
 
 [node name="LevelLabel" type="Label" parent="Margin/VBox"]
 layout_mode = 2
 text = "LVL 1"
+
+[node name="StatsBtn" type="Button" parent="."]
+offset_left = 1170.0
+offset_top = 10.0
+offset_right = 1270.0
+offset_bottom = 44.0
+text = "STATS"
+
+[node name="StatsPanel" type="Panel" parent="."]
+offset_left = 440.0
+offset_top = 210.0
+offset_right = 840.0
+offset_bottom = 510.0
+visible = false
+
+[node name="VBox" type="VBoxContainer" parent="StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+theme_override_constants/separation = 10
+
+[node name="PanelTitle" type="Label" parent="StatsPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "PLAYER STATS"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="StatsPanel/VBox"]
+layout_mode = 2
+text = ""

@@ -5,7 +5,6 @@ signal xp_dropped(amount: int, position: Vector2)
 
 @export var xp_value: int = 10
 @export var damage: int = 10
-@export var attack_range: float = 55.0
 @export var attack_cooldown: float = 1.0
 
 var _attack_timer: float = 0.0
@@ -24,9 +23,9 @@ func _physics_process(delta: float) -> void:
 		_target = _find_player()
 		return
 	_move_toward_target()
-	_try_attack()
 	_update_animation()
 	move_and_slide()
+	_check_collision_damage()
 
 func _update_animation() -> void:
 	if velocity.length() > 1.0:
@@ -47,13 +46,15 @@ func _move_toward_target() -> void:
 		return
 	velocity = (_target.global_position - global_position).normalized() * speed
 
-func _try_attack() -> void:
-	if _target == null or _attack_timer > 0.0:
+func _check_collision_damage() -> void:
+	if _attack_timer > 0.0:
 		return
-	if global_position.distance_to(_target.global_position) <= attack_range:
-		if _target.has_method("take_damage"):
-			_target.take_damage(damage, self)
-		_attack_timer = attack_cooldown
+	for i: int in range(get_slide_collision_count()):
+		var body: Object = get_slide_collision(i).get_collider()
+		if body != null and body.is_in_group("players") and body.has_method("take_damage"):
+			body.take_damage(damage, self)
+			_attack_timer = attack_cooldown
+			break
 
 func die() -> void:
 	xp_dropped.emit(xp_value, global_position)
