@@ -13,16 +13,16 @@ func _build_diff_buttons() -> void:
 		{"label": "Normal", "mode": GameManager.Difficulty.NORMAL},
 		{"label": "Hard",   "mode": GameManager.Difficulty.HARD},
 	]
-	for entry: Dictionary in modes:
+	for entry in modes:
 		var btn := Button.new()
 		btn.text = entry["label"]
 		btn.custom_minimum_size = Vector2(120, 44)
-		var m: GameManager.Difficulty = entry["mode"]
+		var m: int = entry["mode"]
 		btn.pressed.connect(func() -> void: _set_diff(m))
 		diff_row.add_child(btn)
 
-func _set_diff(mode: GameManager.Difficulty) -> void:
-	GameManager.set_difficulty(mode)
+func _set_diff(mode: int) -> void:
+	GameManager.set_difficulty(mode as GameManager.Difficulty)
 	_refresh_diff_label()
 
 func _refresh_diff_label() -> void:

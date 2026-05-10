@@ -1,4 +1,4 @@
-class_name ShopUI
+class_name UpgradeUI
 extends CanvasLayer
 
 signal upgrade_chosen(stat: String, amount: float)
@@ -6,8 +6,7 @@ signal upgrade_chosen(stat: String, amount: float)
 @onready var item_container: HBoxContainer = $Panel/VBox/Items
 @onready var title_label: Label = $Panel/VBox/Title
 
-# Each entry: stat key, display label, numeric delta, tooltip description
-const UPGRADES: Array[Dictionary] = [
+const UPGRADES = [
 	{"stat": "max_health",  "label": "+30 Max HP",  "amount": 30.0,  "desc": "Restore and extend max health by 30."},
 	{"stat": "armor",       "label": "+2 Armor",    "amount": 2.0,   "desc": "Reduce all incoming damage by 2."},
 	{"stat": "speed",       "label": "+20 Speed",   "amount": 20.0,  "desc": "Move 20 units per second faster."},
@@ -21,7 +20,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 
-func show_shop(player: Player) -> void:
+func show_upgrade(player: Player) -> void:
 	_player = player
 	title_label.text = "— CHOOSE AN UPGRADE —"
 	_build_items()
@@ -31,8 +30,7 @@ func show_shop(player: Player) -> void:
 func _build_items() -> void:
 	for child in item_container.get_children():
 		child.queue_free()
-	# Pick 3 random unique upgrades each visit
-	var pool: Array[Dictionary] = UPGRADES.duplicate()
+	var pool: Array = UPGRADES.duplicate()
 	pool.shuffle()
 	for i: int in range(mini(3, pool.size())):
 		var upgrade: Dictionary = pool[i]
@@ -64,7 +62,6 @@ func _apply(stat: String, amount: float) -> void:
 		"dodge_chance":
 			_player.dodge_chance = minf(0.75, _player.dodge_chance + amount)
 		"damage_flat":
-			# Boost every Weapon child on the player
 			for child in _player.get_children():
 				if child is Weapon:
 					(child as Weapon).damage += int(amount)

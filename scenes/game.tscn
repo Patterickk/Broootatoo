@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_basic.tscn" id="4_orc"]
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_fast.tscn" id="5_fast"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
-[ext_resource type="PackedScene" path="res://scenes/ui/shop.tscn" id="7_shop"]
+[ext_resource type="PackedScene" path="res://scenes/ui/upgrade_ui.tscn" id="7_upgrade"]
 [ext_resource type="PackedScene" path="res://scenes/entities/boss.tscn" id="8_boss"]
 
 [node name="Game" type="Node2D" unique_id=1251493614]
@@ -35,4 +35,4 @@ boss_scene = ExtResource("8_boss")
 
 [node name="HUD" parent="." unique_id=720196844 instance=ExtResource("6_hud")]
 
-[node name="ShopUI" parent="." unique_id=909416112 instance=ExtResource("7_shop")]
+[node name="UpgradeUI" parent="." instance=ExtResource("7_upgrade")]

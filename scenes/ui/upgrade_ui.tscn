@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/ui/UpgradeUI.gd" id="1_upgrade"]
+
+[node name="UpgradeUI" type="CanvasLayer"]
+script = ExtResource("1_upgrade")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 340.0
+offset_top = 190.0
+offset_right = 940.0
+offset_bottom = 530.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+text = "— CHOOSE AN UPGRADE —"
+horizontal_alignment = 1
+
+[node name="Items" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
