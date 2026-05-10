@@ -4,10 +4,21 @@
 [ext_resource type="Script" uid="uid://dglqlha37yvgu" path="res://src/systems/WaveManager.gd" id="2_wave"]
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_basic.tscn" id="4_orc"]
 [ext_resource type="PackedScene" path="res://scenes/entities/orc_fast.tscn" id="5_fast"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" uid="uid://drk4vwe3ky8ul" path="res://scenes/ui/hud.tscn" id="6_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/upgrade_ui.tscn" id="7_upgrade"]
 [ext_resource type="PackedScene" path="res://scenes/entities/boss.tscn" id="8_boss"]
-[ext_resource type="Texture2D" uid="uid://c27ngweq5o6jt" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="9_tileset"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
+size = Vector2(121970, 60352)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(103321, 63934)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(131968, 43316.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
+size = Vector2(61031.5, 82874)
 
 [node name="Game" type="Node2D" unique_id=1251493614]
 script = ExtResource("1_game")
@@ -19,14 +30,38 @@ offset_left = -1280.0
 offset_top = -720.0
 offset_right = 1280.0
 offset_bottom = 720.0
-texture = ExtResource("9_tileset")
 stretch_mode = 3
 
-[node name="Border" type="ColorRect" parent="Arena" unique_id=1661984485]
-offset_left = -1240.0
-offset_top = -680.0
-offset_right = 1240.0
-offset_bottom = 680.0
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/Floor" unique_id=2096552501]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Floor/StaticBody2D" unique_id=603904299]
+position = Vector2(-13053, -30098)
+shape = SubResource("RectangleShape2D_u5sy4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Arena/Floor" unique_id=130420107]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Floor/StaticBody2D2" unique_id=244817784]
+position = Vector2(-51578.5, -30367)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Arena/Floor" unique_id=1110388566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Floor/StaticBody2D3" unique_id=372470329]
+position = Vector2(-5999, 23096.75)
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Arena/Floor" unique_id=1470611881]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Floor/StaticBody2D4" unique_id=172156773]
+position = Vector2(33078.25, -39975)
+shape = SubResource("RectangleShape2D_vtaks")
+
+[node name="Border" type="ColorRect" parent="Arena/Floor" unique_id=1661984485]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 78.0
+offset_right = 2561.0
+offset_bottom = 1438.0
 color = Color(0.27, 0.48, 0.17, 1)
 
 [node name="WaveManager" type="Node" parent="." unique_id=274437288]
@@ -37,4 +72,4 @@ boss_scene = ExtResource("8_boss")
 
 [node name="HUD" parent="." unique_id=720196844 instance=ExtResource("6_hud")]
 
-[node name="UpgradeUI" parent="." instance=ExtResource("7_upgrade")]
+[node name="UpgradeUI" parent="." unique_id=1274390270 instance=ExtResource("7_upgrade")]

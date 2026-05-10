@@ -34,18 +34,17 @@ func _calc_count(wave: int) -> int:
 	return int(base * GameManager.get_spawn_multiplier())
 
 func _spawn_wave(count: int) -> void:
-	var vp_rect: Rect2 = get_viewport().get_visible_rect()
 	if current_wave % 5 == 0 and boss_scene != null:
 		var boss: Enemy = boss_scene.instantiate() as Enemy
 		boss.max_health = int(boss.max_health * GameManager.get_health_multiplier())
 		boss.damage = int(boss.damage * GameManager.get_damage_multiplier())
 		get_tree().current_scene.add_child(boss)
-		boss.global_position = _offscreen_position(vp_rect)
+		boss.global_position = _arena_edge_position()
 		boss.xp_dropped.connect(_on_xp_dropped)
 		boss.died.connect(_on_enemy_died)
 		enemies_alive += 1
 	for i: int in range(count):
-		var pos: Vector2 = _offscreen_position(vp_rect)
+		var pos: Vector2 = _arena_edge_position()
 		var scene: PackedScene = _pick_scene(i)
 		if scene == null:
 			enemies_alive -= 1
@@ -63,12 +62,14 @@ func _pick_scene(index: int) -> PackedScene:
 		return orc_fast_scene
 	return orc_basic_scene
 
-func _offscreen_position(rect: Rect2) -> Vector2:
+func _arena_edge_position() -> Vector2:
+	const AX: float = 1160.0
+	const AY: float = 620.0
 	match randi() % 4:
-		0: return Vector2(randf_range(rect.position.x, rect.end.x), rect.position.y - spawn_margin)
-		1: return Vector2(randf_range(rect.position.x, rect.end.x), rect.end.y + spawn_margin)
-		2: return Vector2(rect.position.x - spawn_margin, randf_range(rect.position.y, rect.end.y))
-		_: return Vector2(rect.end.x + spawn_margin, randf_range(rect.position.y, rect.end.y))
+		0: return Vector2(randf_range(-AX, AX), -AY)
+		1: return Vector2(randf_range(-AX, AX), AY)
+		2: return Vector2(-AX, randf_range(-AY, AY))
+		_: return Vector2(AX, randf_range(-AY, AY))
 
 func _on_enemy_died() -> void:
 	enemies_alive -= 1
