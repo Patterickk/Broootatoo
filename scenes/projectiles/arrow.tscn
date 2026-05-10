@@ -1,18 +1,19 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ch0yxp4jv2pw"]
 
-[ext_resource type="Script" path="res://src/weapons/Arrow.gd" id="1_arrow"]
+[ext_resource type="Script" uid="uid://b3w1xouii5tqk" path="res://src/weapons/Arrow.gd" id="1_arrow"]
 [ext_resource type="Texture2D" uid="uid://cljhd8uxxmoo" path="res://assets/Arrow(Projectile)/Arrow01(32x32).png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RS_arrow"]
 size = Vector2(26, 6)
 
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="Area2D" unique_id=529350343]
 script = ExtResource("1_arrow")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1707966442]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=426420928]
 shape = SubResource("RS_arrow")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
