@@ -5,3 +5,6 @@
 # macOS metadata
 __MACOSX/
 .DS_Store
+
+# doc assets auto-imported by Godot
+game_flowchart.png.import
