@@ -7,25 +7,27 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="6_hud"]
 [ext_resource type="PackedScene" path="res://scenes/ui/upgrade_ui.tscn" id="7_upgrade"]
 [ext_resource type="PackedScene" path="res://scenes/entities/boss.tscn" id="8_boss"]
+[ext_resource type="Texture2D" uid="uid://c27ngweq5o6jt" path="res://assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="9_tileset"]
 
 [node name="Game" type="Node2D" unique_id=1251493614]
 script = ExtResource("1_game")
 
 [node name="Arena" type="Node2D" parent="." unique_id=216092850]
 
-[node name="Floor" type="ColorRect" parent="Arena" unique_id=572320107]
+[node name="Floor" type="TextureRect" parent="Arena" unique_id=572320107]
 offset_left = -1280.0
 offset_top = -720.0
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.18, 0.32, 0.14, 1)
+texture = ExtResource("9_tileset")
+stretch_mode = 3
 
 [node name="Border" type="ColorRect" parent="Arena" unique_id=1661984485]
 offset_left = -1240.0
 offset_top = -680.0
 offset_right = 1240.0
 offset_bottom = 680.0
-color = Color(0.22, 0.42, 0.18, 1)
+color = Color(0.27, 0.48, 0.17, 1)
 
 [node name="WaveManager" type="Node" parent="." unique_id=274437288]
 script = ExtResource("2_wave")

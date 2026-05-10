@@ -23,17 +23,21 @@ func _spawn_player() -> void:
 	player = scene.instantiate() as Player
 	add_child(player)
 	player.global_position = Vector2.ZERO
+	player.level_up.connect(_on_player_level_up)
 
 func _on_wave_started(wave_number: int) -> void:
 	hud.set_wave(wave_number, WaveManager.MAX_WAVES)
 
 func _on_wave_completed(_wave_number: int) -> void:
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(1.5).timeout
+	wave_manager.start_next_wave()
+
+func _on_player_level_up(_new_level: int) -> void:
 	if is_instance_valid(player):
 		upgrade_ui.show_upgrade(player)
 
 func _on_upgrade_chosen(_stat: String, _amount: float) -> void:
-	wave_manager.start_next_wave()
+	pass
 
 func _on_all_waves_completed() -> void:
 	GameManager.end_game(true)

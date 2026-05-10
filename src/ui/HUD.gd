@@ -1,8 +1,8 @@
 class_name HUD
 extends CanvasLayer
 
-@onready var health_bar: ProgressBar = $Margin/VBox/HealthBar
-@onready var xp_bar: ProgressBar = $Margin/VBox/XPBar
+@onready var health_bar: TextureProgressBar = $Margin/VBox/HealthBar
+@onready var xp_bar: TextureProgressBar = $Margin/VBox/XPBar
 @onready var wave_label: Label = $Margin/VBox/WaveLabel
 @onready var level_label: Label = $Margin/VBox/LevelLabel
 @onready var stats_btn: Button = $StatsBtn
@@ -33,8 +33,6 @@ func _on_health_changed(current: int, maximum: int) -> void:
 func _refresh_health(current: int, maximum: int) -> void:
 	health_bar.max_value = maximum
 	health_bar.value = current
-	var pct: float = float(current) / float(maximum) if maximum > 0 else 0.0
-	health_bar.modulate = Color(1.0, pct, pct)
 
 func _on_xp_changed(current: int, required: int) -> void:
 	_refresh_xp(current, required)

@@ -1,6 +1,10 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://src/ui/HUD.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://dykx1rhjjkge0" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/BigBar_Base.png" id="2_big_base"]
+[ext_resource type="Texture2D" uid="uid://bghmdler6ka2k" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/BigBar_Fill.png" id="3_big_fill"]
+[ext_resource type="Texture2D" uid="uid://d33afqvcw4pgj" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/SmallBar_Base.png" id="4_small_base"]
+[ext_resource type="Texture2D" uid="uid://bciy4aptu2oc8" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/SmallBar_Fill.png" id="5_small_fill"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -8,8 +12,8 @@ script = ExtResource("1_hud")
 [node name="Margin" type="MarginContainer" parent="."]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 270.0
-offset_bottom = 120.0
+offset_right = 290.0
+offset_bottom = 130.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -19,19 +23,25 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HealthBar" type="ProgressBar" parent="Margin/VBox"]
+[node name="HealthBar" type="TextureProgressBar" parent="Margin/VBox"]
 layout_mode = 2
-custom_minimum_size = Vector2(220, 22)
+custom_minimum_size = Vector2(256, 28)
 max_value = 100.0
 value = 100.0
-show_percentage = false
+texture_under = ExtResource("2_big_base")
+texture_progress = ExtResource("3_big_fill")
+stretch_margin_left = 68
+stretch_margin_right = 68
 
-[node name="XPBar" type="ProgressBar" parent="Margin/VBox"]
+[node name="XPBar" type="TextureProgressBar" parent="Margin/VBox"]
 layout_mode = 2
-custom_minimum_size = Vector2(220, 14)
+custom_minimum_size = Vector2(220, 18)
 max_value = 100.0
 value = 0.0
-show_percentage = false
+texture_under = ExtResource("4_small_base")
+texture_progress = ExtResource("5_small_fill")
+stretch_margin_left = 54
+stretch_margin_right = 54
 
 [node name="WaveLabel" type="Label" parent="Margin/VBox"]
 layout_mode = 2
