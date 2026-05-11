@@ -1,0 +1,29 @@
+Act as a Senior Godot 4 Developer. I am building a 2D Roguelite Survivor game (Brotato-style). I have the Godot MCP enabled, so you can interact with my project files and nodes.
+
+Project Context:
+- Engine: Godot 4.x (GDScript)
+- Renderer: Compatibility (for Web/Vercel deployment)
+- Game Goal: Survive waves of enemies, collect XP, and upgrade stats/weapons.
+
+Academic Requirements (CRITICAL for my grade):
+Your code MUST explicitly demonstrate these 5 concepts:
+1. OOP: Use 'class_name' and inheritance (e.g., Entity -> Player/Enemy).
+2. Nested Conditionals: Use at least 2 levels of if-else in damage calculations or AI logic.
+3. Nested Iterations: Use nested for/while loops in systems like "Auto-aiming" (scanning enemies) or "Grid rendering".
+4. Advanced Custom Functions: Use functions with typed parameters and return values.
+5. Sophisticated UI: Dynamic health bars, EXP bars, and a shop system.
+
+Game Design (Based on PDF):
+- Implement 3 Difficulty Modes: Easy, Normal, Hard.
+- Wave-based structure with a Special Mode (Timed/Pressure).
+
+Task 1: Initial Setup & Architecture
+1. Use the Godot MCP to inspect my current project structure.
+2. Create a 'src/' directory for scripts and an 'assets/' directory for resources.
+3. Generate 'Entity.gd' as a base class. 
+4. Generate 'Player.gd' inheriting from Entity with:
+   - WASD movement.
+   - A 'take_damage' function using nested if-else to check for 'Dodge' and 'Armor' stats.
+   - A 'scan_for_enemies' function using a nested loop to find the closest enemy within a group.
+
+Please start by proposing the file structure, then wait for my confirmation before writing the code.
